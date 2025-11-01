@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es" class="dark">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Explora nuestra colección de endpoints, scripts y herramientas. Encuentra lo que necesitas o descubre algo nuevo.">
     <meta name="theme-color" content="#0b1020">
     <title>Shadow-API.</title>
@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
     <script>
       tailwind.config = {
         darkMode: 'class',
@@ -29,53 +28,19 @@
     </script>
 
     <style>
-        /* ---------- Animated gradient background ---------- */
-        :root {
-            --bg-a: 18,18,24;
-            --bg-b: 8,10,16;
-            --accent1: 124,92,255; /* violeta */
-            --accent2: 63,231,246; /* cian */
-            --accent3: 255,110,199; /* fucsia */
+        /* quitar scrollbar (solo visual) */
+        ::-webkit-scrollbar {
+            display: none !important;
         }
 
-        body {
-            transition: background-color 300ms ease, color 300ms ease;
-        }
-
-        .animated-bg {
-            background: radial-gradient(circle at 10% 10%, rgba(var(--accent2),0.08), transparent 10%),
-                        radial-gradient(circle at 90% 90%, rgba(var(--accent3),0.06), transparent 10%),
-                        linear-gradient(120deg, rgba(var(--bg-a),1), rgba(var(--bg-b),1));
-            background-size: 120% 120%;
-            animation: bgMove 12s linear infinite;
-        }
-
-        @keyframes bgMove {
-            0% { background-position: 0% 0%; }
-            50% { background-position: 100% 100%; }
-            100% { background-position: 0% 0%; }
-        }
-
-        /* ---------- Light theme (soft) ---------- */
-        .light-theme {
-            --bg-a: 245,246,250;
-            --bg-b: 233,236,239;
-            color: #0b1220;
-        }
-
-        /* ---------- glass / card styles ---------- */
+        /* cristal y fondo */
         .glass {
-            backdrop-filter: blur(12px) saturate(140%);
-            background: rgba(12, 14, 20, 0.5);
-            border: 1px solid rgba(255,255,255,0.04);
+            backdrop-filter: blur(16px) saturate(180%);
+            background: rgba(12, 14, 20, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.06);
         }
 
-        .light-theme .glass {
-            background: rgba(255,255,255,0.7);
-            border: 1px solid rgba(12,14,20,0.06);
-        }
-
-        /* ---------- loaders ---------- */
+        /* loader simple */
         .loader {
             width: 28px;
             height: 28px;
@@ -85,534 +50,434 @@
             animation: spin 1s linear infinite;
             margin: 8px auto;
         }
-        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
 
-        /* ---------- neon gradients ---------- */
+        /* gradientes neón */
         .gradient-text {
-            background: linear-gradient(90deg, rgba(var(--accent1),1) 0%, rgba(var(--accent2),1) 40%, rgba(var(--accent3),1) 100%);
+            background: linear-gradient(90deg, #7c5cff 0%, #3fe7f6 40%, #ff6ec7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .btn-gradient {
-            background: linear-gradient(90deg, rgba(var(--accent1),1) 0%, rgba(var(--accent2),1) 50%, rgba(var(--accent3),1) 100%);
+            background: linear-gradient(90deg, rgba(124,92,255,0.95) 0%, rgba(63,231,246,0.9) 50%, rgba(255,110,199,0.95) 100%);
             color: white;
-            transition: all 0.22s ease;
-            box-shadow: 0 10px 30px -10px rgba(var(--accent1),0.35);
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 30px -10px rgba(124,92,255,0.35);
         }
         .btn-gradient:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 20px 50px -15px rgba(var(--accent1),0.45);
-            filter: saturate(1.05);
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px -10px rgba(124,92,255,0.45);
+            filter: saturate(1.1);
         }
 
-        /* moving gradient border for "good" buttons */
-        .btn-good {
-            position: relative;
-            overflow: hidden;
-            isolation: isolate;
-        }
-        .btn-good::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            background: linear-gradient(90deg, rgba(var(--accent1),0.9), rgba(var(--accent2),0.9), rgba(var(--accent3),0.9));
-            z-index: -2;
-            filter: blur(14px);
-            opacity: 0.9;
-            transform: translateX(-30%);
-            animation: glowMove 6s linear infinite;
-        }
-        .btn-good .btn-inner {
-            position: relative;
-            z-index: 2;
-            padding: 0.5rem 1rem;
-            display: inline-block;
-            background: rgba(0,0,0,0.35);
-            border-radius: 10px;
-        }
-        @keyframes glowMove {
-            0% { transform: translateX(-30%); }
-            50% { transform: translateX(30%); }
-            100% { transform: translateX(-30%); }
-        }
-
-        /* status badges */
+        /* badges status */
         .status-ready { background: rgba(16,185,129,0.12); color: #7fffd4; }
         .status-update { background: rgba(250,204,21,0.08); color: #ffd66b; }
         .status-error { background: rgba(239,68,68,0.08); color: #ff9b9b; }
 
-        /* response box + curl */
+        /* tarjeta de respuesta */
         .response-box {
             background: linear-gradient(180deg, rgba(7,9,14,0.9), rgba(9,11,18,0.95));
             border: 1px solid rgba(255,255,255,0.04);
-            transition: transform 180ms ease;
-        }
-        .curl-box {
-            background: rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.04);
-            padding: 8px;
-            border-radius: 6px;
-            font-family: 'Ubuntu Mono', monospace;
-            font-size: 12px;
-            margin-top: 8px;
         }
 
-        /* small responsive niceties */
-        .neon-title { position: relative; display:inline-block; font-weight:800; letter-spacing:-0.4px; text-shadow: 0 0 8px rgba(var(--accent1),0.45); }
-        .neon-title::after { content: ''; position:absolute; left:-6%; top:0; width:112%; height:100%; background:linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); transform:skewX(-12deg); pointer-events:none; mix-blend-mode: overlay; opacity:0; animation: sheen 3.5s linear infinite;}
-        @keyframes sheen { 0%{opacity:0;transform:translateX(-120%) skewX(-12deg);} 45%{opacity:0.55; transform:translateX(40%) skewX(-12deg);} 100%{opacity:0; transform:translateX(120%) skewX(-12deg);} }
-
-        /* copy button small */
-        .copy-btn {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.04);
-            padding: 6px 8px;
-            border-radius: 6px;
-            font-size: 12px;
-            cursor: pointer;
+        /* efecto de brillo animado para el título */
+        .neon-title {
+            position: relative;
+            display: inline-block;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-shadow:
+              0 0 6px rgba(124,92,255,0.55),
+              0 0 12px rgba(63,231,246,0.12),
+              0 0 24px rgba(255,110,199,0.06);
         }
 
-        /* placeholder colors for light theme input */
-        .light-theme input { background: #fff; color: #0b1220; }
-        .light-theme .response-box { background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(245,245,245,0.9)); border:1px solid rgba(12,14,20,0.04); color: #0b1220; }
-        .light-theme .curl-box { background: rgba(0,0,0,0.03); color: #0b1220; border:1px solid rgba(12,14,20,0.04); }
+        .neon-title::after {
+            content: '';
+            position: absolute;
+            left: -6%;
+            top: 0;
+            width: 112%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02), rgba(255,255,255,0.08));
+            transform: skewX(-12deg);
+            pointer-events: none;
+            mix-blend-mode: overlay;
+            opacity: 0;
+            animation: sheen 3.5s linear infinite;
+        }
+        @keyframes sheen {
+            0% { opacity: 0; transform: translateX(-120%) skewX(-12deg); }
+            45% { opacity: 0.55; transform: translateX(40%) skewX(-12deg); }
+            100% { opacity: 0; transform: translateX(120%) skewX(-12deg); }
+        }
+
+        /* pequeños ajustes para que el layout se vea bien */
+        .api-item .material-icons { color: rgba(255,255,255,0.65); }
+        .text-woah { color: #cde; }
     </style>
 </head>
-<body class="animated-bg bg-gray-900 text-slate-300 antialiased font-mono min-h-screen">
-    <main class="max-w-3xl mx-auto px-6 py-12">
+<body class="bg-gray-900 text-slate-300 antialiased font-mono min-h-screen">
+    <main class="max-w-3xl mx-auto px-8 py-16">
 
-        <!-- HEADER: logo + title + theme toggle -->
-        <div class="flex items-center justify-between mb-6">
-            <div class="flex items-center gap-4">
-                <img src="/assets/icon.png" class="w-12 md:w-10 rounded-md shadow-md">
+        <div class="text-left mb-8">
+            <div class="flex items-center gap-4 mb-4">
+                <img src="/assets/icon.png" class="w-12 md:w-9 rounded-md shadow-md">
+                <h1 class="text-3xl md:text-4xl font-bold gradient-text neon-title">Shadow-API</h1>
+            </div>
+            <p class="text-slate-400 text-sm mx-auto mb-4">
+                Bienvenido a la documentación de Shadow-API. Esta interfaz interactiva te permite explorar y probar en tiempo real la colección completa de endpoints de la API.
+            </p>
+
+            <div class="mb-4 text-xs space-y-1">
                 <div>
-                    <h1 class="text-2xl md:text-3xl font-bold gradient-text neon-title">Shadow-API</h1>
-                    <p class="text-slate-400 text-sm">Documentación interactiva — prueba tus endpoints en tiempo real</p>
+                    <a href="https://wa.me/51919199620" target="_blank" class="text-slate-300 hover:text-white underline">Contacto shadow.</a>
                 </div>
             </div>
-
-            <div class="flex items-center gap-3">
-                <!-- Theme toggle (user-only preference saved in localStorage) -->
-                <button id="themeToggle" title="Cambiar tema" class="btn-good px-3 py-1 rounded-md">
-                    <span class="btn-inner"><i class="fas fa-adjust mr-2"></i><span id="themeLabel">Modo</span></span>
-                </button>
-
-                <!-- Reset theme (optional) -->
-                <button id="themeReset" title="Restablecer tema" class="copy-btn" style="margin-left:6px;">Restablecer</button>
-            </div>
         </div>
 
-        <!-- Info + contact -->
-        <div class="mb-6">
-            <div class="flex items-center justify-between">
-                <div class="text-sm text-slate-400">Bienvenido a la documentación de Shadow-API.</div>
-                <a href="https://wa.me/51919199620" target="_blank" class="text-xs text-slate-300 hover:text-white underline">Contacto shadow</a>
-            </div>
-        </div>
-
-        <!-- Notifications -->
-        <div class="mb-6">
-            <div class="flex items-center justify-between mb-2">
-                <h2 class="text-base font-semibold text-slate-300 flex items-center"><span class="material-icons text-lg mr-2 text-gray-400">notifications</span> Información</h2>
+        <!-- Panel de Notificaciones -->
+        <div class="mb-8">
+            <div class="flex items-center justify-between mb-3">
+                <h2 class="text-lg font-semibold text-slate-300 flex items-center">
+                    <span class="material-icons text-xl mr-2 text-gray-400">notifications</span>
+                    Información
+                </h2>
                 <span id="unread-count" class="text-xs bg-indigo-500/50 text-indigo-300 px-2 py-1 rounded-full hidden"></span>
             </div>
             <div id="notifications-list" class="space-y-2">
+                <!-- Aquí se cargarán las notificaciones -->
                 <div class="loader"></div>
             </div>
         </div>
 
-        <!-- Search -->
-        <div class="mb-6">
-            <div class="relative">
-                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                    <span class="material-icons text-gray-400">search</span>
+        <div class="flex items-center justify-between mb-4">
+            <div class="flex-1 relative">
+                <div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
+                    <span class="material-icons text-gray-500 text-lg">search</span>
                 </div>
-                <input type="text" id="searchInput" placeholder="Buscar endpoints de la API..."
-                    class="w-full pl-12 pr-4 py-3 text-sm border border-gray-700 bg-gray-800 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-indigo-400 rounded-md">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Buscar endpoints de la API..." 
+                    class="w-full pl-12 pr-5 py-4 text-sm border border-gray-700 bg-gray-800 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-indigo-400"
+                >
             </div>
         </div>
 
-        <!-- Content -->
         <div id="content" class="space-y-4">
-            <div id="noResults" class="text-center py-16" style="display:none;">
+            <div id="noResults" class="text-center py-16" style="display: none;">
                 <div class="max-w-md mx-auto">
                     <h3 class="text-xs text-slate-400 mb-2">No se encontraron resultados.</h3>
                 </div>
             </div>
 
-            <div id="apiList" class="space-y-3"></div>
+            <div id="apiList" class="space-y-3">
+                <!-- Lista de APIs cargada dinámicamente -->
+            </div>
         </div>
 
-        <!-- Footer -->
-        <footer class="mt-8 text-center">
-            <p class="text-slate-400 text-xs">2025 Shadow-API</p>
-            <p class="text-slate-400 text-xs">inspirado en: <a href="https://api.nekolabs.my.id/" target="_blank" class="underline">api.nekolabs.my.id</a></p>
+        <footer class="mt-12">
+            <p class="text-slate-400 text-xs mx-auto mb-2">
+              2025 Shadow-API
+            </p>
+            <p class="text-slate-400 text-xs mx-auto mb-4">
+              inspirado en: <a href="https://api.nekolabs.my.id/" target="_blank" class="underline">api.nekolabs.my.id</a>
+            </p>
         </footer>
     </main>
 
 <script>
-/* ----------------- Theme toggle (user-only) ----------------- */
-const THEME_KEY = 'shadow-theme';
-const body = document.body;
-const themeToggle = document.getElementById('themeToggle');
-const themeLabel = document.getElementById('themeLabel');
-const themeReset = document.getElementById('themeReset');
-
-function applyTheme(theme) {
-    if (theme === 'light') {
-        body.classList.add('light-theme');
-        themeLabel.textContent = 'Claro';
-    } else {
-        body.classList.remove('light-theme');
-        themeLabel.textContent = 'Oscuro';
-    }
-    localStorage.setItem(THEME_KEY, theme);
-}
-
-function initTheme() {
-    const saved = localStorage.getItem(THEME_KEY) || 'dark';
-    applyTheme(saved);
-}
-
-themeToggle.addEventListener('click', () => {
-    const current = localStorage.getItem(THEME_KEY) || 'dark';
-    const next = current === 'dark' ? 'light' : 'dark';
-    applyTheme(next);
-});
-
-themeReset.addEventListener('click', () => {
-    localStorage.removeItem(THEME_KEY);
-    applyTheme('dark');
-});
-
-initTheme();
-
-/* ----------------- Utils ----------------- */
-function escapeHtml(str = '') {
-    return String(str).replace(/[&<>"'`]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;',"`":'&#96;'}[s]));
-}
-
-/* ----------------- Curl builder + copy ----------------- */
-function buildCurl(method, fullPath) {
-    // For now we assume simple GET (no auth). If you later add POST, extend.
-    const safePath = fullPath.includes('"') ? fullPath.replace(/"/g, '\\"') : fullPath;
-    return `curl -X ${method} "${safePath}"`;
-}
-
-function copyToClipboard(text) {
-    navigator.clipboard?.writeText(text).then(() => {
-        // small visual feedback (native)
-        alert('cURL copiado al portapapeles');
-    }).catch(() => {
-        // fallback
-        const ta = document.createElement('textarea');
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        ta.remove();
-        alert('cURL copiado al portapapeles (fallback)');
-    });
-}
-
-/* ----------------- Existing functions (kept logic, added curl UI) ----------------- */
-function toggleCategory(index) {
-    const category = document.getElementById(`category-${index}`);
-    const icon = document.getElementById(`category-icon-${index}`);
-    if (category.classList.contains('hidden')) {
-        category.classList.remove('hidden');
-        icon.textContent = 'expand_less';
-    } else {
-        category.classList.add('hidden');
-        icon.textContent = 'expand_more';
-    }
-}
-
-function toggleEndpoint(catIndex, endpointIndex) {
-    const endpoint = document.getElementById(`endpoint-${catIndex}-${endpointIndex}`);
-    const icon = document.getElementById(`endpoint-icon-${catIndex}-${endpointIndex}`);
-    if (endpoint.classList.contains('hidden')) {
-        endpoint.classList.remove('hidden');
-        icon.textContent = 'expand_less';
-    } else {
-        endpoint.classList.add('hidden');
-        icon.textContent = 'expand_more';
-    }
-}
-
-async function executeRequest(event, catIndex, endpointIndex, method, path, produces) {
-    event.preventDefault();
-    const form = document.getElementById(`form-${catIndex}-${endpointIndex}`);
-    const responseDiv = document.getElementById(`response-${catIndex}-${endpointIndex}`);
-    const responseContent = document.getElementById(`response-content-${catIndex}-${endpointIndex}`);
-    const clearButton = document.getElementById(`clear-${catIndex}-${endpointIndex}`);
-    const curlContainer = document.getElementById(`curl-${catIndex}-${endpointIndex}`);
-
-    const formData = new FormData(form);
-    const params = new URLSearchParams();
-    for (const [key, value] of formData.entries()) {
-        if (value) {
-            params.append(key, value);
-        }
-    }
-
-    // Build full path (handle if path already had ?)
-    const queryString = params.toString();
-    const fullPath = queryString ? `${path}?${queryString}` : path;
-
-    // show loader
-    responseDiv.classList.remove('hidden');
-    responseContent.innerHTML = '<div class="loader"></div>';
-    curlContainer.innerHTML = ''; // clear prior
-
-    try {
-        const response = await fetch(fullPath);
-        const contentType = response.headers.get("content-type");
-        if (contentType && contentType.includes("application/json")) {
-            const data = await response.json();
-            responseContent.innerHTML = `<pre>${escapeHtml(JSON.stringify(data, null, 2))}</pre>`;
-        } else if (contentType && contentType.startsWith("image/")) {
-            const blob = await response.blob();
-            const imageUrl = URL.createObjectURL(blob);
-            responseContent.innerHTML = `<img src="${imageUrl}" class="max-w-full h-auto rounded-md">`;
+    // Funciones existentes (no se cambió la lógica, solo textos visibles)
+    function toggleCategory(index) {
+        const category = document.getElementById(`category-${index}`);
+        const icon = document.getElementById(`category-icon-${index}`);
+        if (category.classList.contains('hidden')) {
+            category.classList.remove('hidden');
+            icon.textContent = 'expand_less';
         } else {
-            const text = await response.text();
-            responseContent.innerHTML = `<pre>${escapeHtml(text)}</pre>`;
+            category.classList.add('hidden');
+            icon.textContent = 'expand_more';
         }
-    } catch (error) {
-        responseContent.innerHTML = `<pre>${escapeHtml(String(error))}</pre>`;
     }
 
-    // Show cURL
-    const curlCmd = buildCurl(method, fullPath);
-    curlContainer.innerHTML = `
-        <div class="curl-box">
-            <div style="display:flex; justify-content:space-between; gap:8px; align-items:center;">
-                <div style="flex:1; overflow:auto;"><code>${escapeHtml(curlCmd)}</code></div>
-                <div style="margin-left:8px;">
-                    <button class="copy-btn" onclick='copyToClipboard(${JSON.stringify(curlCmd)})'>Copiar cURL</button>
-                </div>
-            </div>
-        </div>
-    `;
+    function toggleEndpoint(catIndex, endpointIndex) {
+        const endpoint = document.getElementById(`endpoint-${catIndex}-${endpointIndex}`);
+        const icon = document.getElementById(`endpoint-icon-${catIndex}-${endpointIndex}`);
+        if (endpoint.classList.contains('hidden')) {
+            endpoint.classList.remove('hidden');
+            icon.textContent = 'expand_less';
+        } else {
+            endpoint.classList.add('hidden');
+            icon.textContent = 'expand_more';
+        }
+    }
 
-    clearButton.classList.remove('hidden');
-}
+    async function executeRequest(event, catIndex, endpointIndex, method, path, produces) {
+        event.preventDefault();
+        const form = document.getElementById(`form-${catIndex}-${endpointIndex}`);
+        const responseDiv = document.getElementById(`response-${catIndex}-${endpointIndex}`);
+        const responseContent = document.getElementById(`response-content-${catIndex}-${endpointIndex}`);
+        const clearButton = document.getElementById(`clear-${catIndex}-${endpointIndex}`);
+        
+        const formData = new FormData(form);
+        const params = new URLSearchParams();
+        for (const [key, value] of formData.entries()) {
+            if (value) {
+                params.append(key, value);
+            }
+        }
 
-function clearResponse(catIndex, endpointIndex) {
-    const responseDiv = document.getElementById(`response-${catIndex}-${endpointIndex}`);
-    const responseContent = document.getElementById(`response-content-${catIndex}-${endpointIndex}`);
-    const clearButton = document.getElementById(`clear-${catIndex}-${endpointIndex}`);
-    const curlContainer = document.getElementById(`curl-${catIndex}-${endpointIndex}`);
-    responseContent.innerHTML = '';
-    curlContainer.innerHTML = '';
-    responseDiv.classList.add('hidden');
-    clearButton.classList.add('hidden');
-}
+        const fullPath = `${path}?${params.toString()}`;
+        responseDiv.classList.remove('hidden');
+        responseContent.innerHTML = '<div class="loader"></div>';
 
-/* ----------------- Load and render APIs (same logic but added CURL container and better buttons) ----------------- */
-async function loadApis() {
-    const apiList = document.getElementById('apiList');
-    try {
-        const response = await fetch('/assets/settings.json');
-        const data = await response.json();
+        try {
+            const response = await fetch(fullPath);
+            const contentType = response.headers.get("content-type");
+            if (contentType && contentType.includes("application/json")) {
+                const data = await response.json();
+                responseContent.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+            } else if (contentType && contentType.startsWith("image/")) {
+                const blob = await response.blob();
+                const imageUrl = URL.createObjectURL(blob);
+                responseContent.innerHTML = `<img src="${imageUrl}" class="max-w-full h-auto rounded-md">`;
+            } else {
+                const text = await response.text();
+                responseContent.innerHTML = `<pre>${text}</pre>`;
+            }
+        } catch (error) {
+            responseContent.innerHTML = `<pre>${error}</pre>`;
+        }
+        clearButton.classList.remove('hidden');
+    }
 
-        let html = '';
-        data.categories.forEach((category, catIndex) => {
-            html += `
-            <div class="category-group" data-category="${category.name}">
-                <div class="mb-2">
-                    <div class="bg-gray-800 border border-gray-700 rounded-md overflow-hidden">
-                        <button onclick="toggleCategory(${catIndex})" class="w-full px-4 py-3 text-left flex items-center justify-between hover:bg-gray-700 transition-colors duration-150">
-                            <h2 class="font-bold flex items-center">
-                                <span class="material-icons text-lg mr-3 text-gray-400">folder</span>
-                                <span class="truncate max-w-xs text-sm">${category.name}</span>
-                                <span class="ml-2 text-xs text-gray-500">(${category.items.length})</span>
-                            </h2>
-                            <span class="material-icons transition-transform duration-150" id="category-icon-${catIndex}">expand_more</span>
-                        </button>
+    function clearResponse(catIndex, endpointIndex) {
+        const responseDiv = document.getElementById(`response-${catIndex}-${endpointIndex}`);
+        const responseContent = document.getElementById(`response-content-${catIndex}-${endpointIndex}`);
+        const clearButton = document.getElementById(`clear-${catIndex}-${endpointIndex}`);
+        responseContent.innerHTML = '';
+        responseDiv.classList.add('hidden');
+        clearButton.classList.add('hidden');
+    }
 
-                        <div id="category-${catIndex}" class="hidden">`;
-
-            category.items.forEach((item, endpointIndex) => {
-                const method = 'GET';
-                const pathParts = item.path.split('?');
-                const path = pathParts[0];
-                const queryParams = new URLSearchParams(pathParts[1] || '');
-                const statusClasses = { 'ready':'status-ready', 'update':'status-update', 'error':'status-error' };
-                const statusClass = statusClasses[item.status] || 'bg-gray-600';
-
+    // Cargar y renderizar APIs
+    async function loadApis() {
+        const apiList = document.getElementById('apiList');
+        try {
+            const response = await fetch('/assets/settings.json');
+            const data = await response.json();
+            
+            let html = '';
+            data.categories.forEach((category, catIndex) => {
                 html += `
-                    <div class="border-t border-gray-700 api-item" 
-                         data-method="${method}"
-                         data-path="${path}"
-                         data-alias="${item.name}"
-                         data-description="${item.desc}"
-                         data-category="${category.name}">
-                        <button onclick="toggleEndpoint(${catIndex}, ${endpointIndex})" class="w-full px-4 py-3 text-left flex items-center justify-between hover:bg-gray-700 transition-colors duration-150">
-                            <div class="flex items-center min-w-0 flex-1">
-                                <span class="inline-block px-3 py-1 text-xs font-semibold text-white mr-3 flex-shrink-0 bg-gray-600">
-                                    ${method}
-                                </span>
-                                <div class="flex flex-col min-w-0 flex-1">
-                                    <span class="font-semibold truncate max-w-[90%] font-mono text-sm" title="${path}">${path}</span>
-                                    <div class="flex items-center">
-                                        <span class="text-xs text-gray-400 truncate max-w-[90%]" title="${item.name}">${item.name}</span>
-                                        <span class="ml-2 px-2 py-0.5 text-xs rounded-full ${statusClass}">${item.status || 'ready'}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <span class="material-icons transition-transform duration-150 flex-shrink-0" id="endpoint-icon-${catIndex}-${endpointIndex}">expand_more</span>
-                        </button>
+                <div class="category-group" data-category="${category.name}">
+                    <div class="mb-2">
+                        <div class="bg-gray-800 border border-gray-700">
+                            <button onclick="toggleCategory(${catIndex})" class="w-full px-4 py-3 text-left flex items-center justify-between hover:bg-gray-700 transition-colors duration-150">
+                                <h2 class="font-bold flex items-center">
+                                    <span class="material-icons text-lg mr-3 text-gray-400">folder</span>
+                                    <span class="truncate max-w-xs text-sm">${category.name}</span>
+                                    <span class="ml-2 text-xs text-gray-500">(${category.items.length})</span>
+                                </h2>
+                                <span class="material-icons transition-transform duration-150" id="category-icon-${catIndex}">expand_more</span>
+                            </button>
+                            
+                            <div id="category-${catIndex}" class="hidden">`;
+                
+                category.items.forEach((item, endpointIndex) => {
+                    const method = 'GET'; // Asumimos GET por ahora
+                    const pathParts = item.path.split('?');
+                    const path = pathParts[0];
+                    const queryParams = new URLSearchParams(pathParts[1] || '');
 
-                        <div id="endpoint-${catIndex}-${endpointIndex}" class="hidden bg-gray-800 p-4 border-t border-gray-700">
-                            <div class="mb-3">
-                                <div class="text-gray-400 text-xs">${item.desc}</div>
-                            </div>`;
+                    const statusClasses = {
+                        'ready': 'status-ready',
+                        'update': 'status-update',
+                        'error': 'status-error'
+                    };
+                    const statusClass = statusClasses[item.status] || 'bg-gray-600';
 
-                if (item.status === 'ready') {
                     html += `
-                            <div>
-                                <div class="text-gray-300 font-bold text-xs mb-2 flex items-center">
-                                    <span class="material-icons text-sm mr-1">play_arrow</span>
-                                    PRUÉBALO
-                                </div>
-                                <div>
-                                    <form id="form-${catIndex}-${endpointIndex}" onsubmit="executeRequest(event, ${catIndex}, ${endpointIndex}, '${method}', '${path}', 'application/json')">
-                                        <div class="mb-4 space-y-2">`;
-                    if (item.params) {
-                        Object.keys(item.params).forEach(paramName => {
-                            const isRequired = !queryParams.has(paramName) || queryParams.get(paramName) === '';
-                            html += `<div>
-                                        <label class="block text-xs font-medium text-slate-400 mb-2">${paramName} ${isRequired ? '<span class="text-red-500">*</span>' : ''}</label>
-                                        <input type="text" name="${paramName}" class="w-full px-3 py-2 border border-gray-600 text-sm focus:outline-none focus:border-indigo-500 bg-gray-700 placeholder:text-slate-500 rounded-md" placeholder="${item.params[paramName]}" ${isRequired ? 'required' : ''}>
-                                    </div>`;
-                        });
+                                <div class="border-t border-gray-700 api-item" 
+                                     data-method="${method}"
+                                     data-path="${path}"
+                                     data-alias="${item.name}"
+                                     data-description="${item.desc}"
+                                     data-category="${category.name}">
+                                    <button onclick="toggleEndpoint(${catIndex}, ${endpointIndex})" class="w-full px-4 py-3 text-left flex items-center justify-between hover:bg-gray-700 transition-colors duration-150">
+                                        <div class="flex items-center min-w-0 flex-1">
+                                            <span class="inline-block px-3 py-1 text-xs font-semibold text-white mr-3 flex-shrink-0 bg-gray-600">
+                                                ${method}
+                                            </span>
+                                            <div class="flex flex-col min-w-0 flex-1">
+                                                <span class="font-semibold truncate max-w-[90%] font-mono text-sm" title="${path}">${path}</span>
+                                                <div class="flex items-center">
+                                                    <span class="text-xs text-gray-400 truncate max-w-[90%]" title="${item.name}">${item.name}</span>
+                                                    <span class="ml-2 px-2 py-0.5 text-xs rounded-full ${statusClass}">${item.status || 'ready'}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="material-icons transition-transform duration-150 flex-shrink-0" id="endpoint-icon-${catIndex}-${endpointIndex}">expand_more</span>
+                                    </button>
+                                    
+                                    <div id="endpoint-${catIndex}-${endpointIndex}" class="hidden bg-gray-800 p-4 border-t border-gray-700">
+                                        <div class="mb-3">
+                                            <div class="text-gray-400 text-xs">${item.desc}</div>
+                                        </div>
+                                        `;
+                    if (item.status === 'ready') {
+                        html += `
+                                            <div>
+                                                <div class="text-gray-300 font-bold text-xs mb-2 flex items-center">
+                                                    <span class="material-icons text-sm mr-1">play_arrow</span>
+                                                    PRUÉBALO
+                                                </div>
+                                                <div>
+                                                    <form id="form-${catIndex}-${endpointIndex}" onsubmit="executeRequest(event, ${catIndex}, ${endpointIndex}, '${method}', '${path}', 'application/json')">
+                                                        <div class="mb-4 space-y-2">`;
+                        if (item.params) {
+                            Object.keys(item.params).forEach(paramName => {
+                                const isRequired = !queryParams.has(paramName) || queryParams.get(paramName) === '';
+                                 html += `<div>
+                                            <label class="block text-xs font-medium text-slate-400 mb-2">${paramName} ${isRequired ? '<span class="text-red-500">*</span>' : ''}</label>
+                                            <input type="text" name="${paramName}" class="w-full px-3 py-2 border border-gray-600 text-sm focus:outline-none focus:border-indigo-500 bg-gray-700 placeholder:text-slate-500" placeholder="${item.params[paramName]}" ${isRequired ? 'required' : ''}>
+                                          </div>`;
+                            });
+                        }
+                        html += `
+                                                        </div>
+                                                        <button type="submit" class="btn-gradient font-semibold text-white px-6 py-2 text-xs font-medium transition-colors duration-150">
+                                                            Ejecutar
+                                                        </button>
+                                                        <button type="button" id="clear-${catIndex}-${endpointIndex}" onclick="clearResponse(${catIndex}, ${endpointIndex})" class="hidden bg-gray-700 border border-gray-600 hover:border-gray-500 font-semibold text-slate-300 px-6 py-2 text-xs font-medium transition-colors duration-150 ml-2">
+                                                            Limpiar
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>`;
+                    } else {
+                        html += `<div class="text-yellow-400 text-xs p-3 bg-yellow-500/20 border border-yellow-500/30">Este endpoint no puede probarse en este momento.</div>`;
                     }
+
                     html += `
+                                        <div id="response-${catIndex}-${endpointIndex}" class="hidden mt-4">
+                                            <div class="text-gray-300 font-bold text-xs mb-2 flex items-center">
+                                                <span class="material-icons text-sm mr-1">code</span>
+                                                RESPUESTA
+                                            </div>
+                                            <div class="response-box text-white text-xs p-4 border border-gray-700">
+                                                <div class="max-h-80 overflow-auto" id="response-content-${catIndex}-${endpointIndex}"></div>
+                                            </div>
                                         </div>
+                                    </div>
+                                </div>`;
+                });
+                html += `</div></div></div>`;
+            });
+            apiList.innerHTML = html;
+        } catch (error) {
+            apiList.innerHTML = '<p class="text-red-500">Error al cargar datos de la API.</p>';
+            console.error('Error loading API data:', error);
+        }
+    }
+    
+    // Cargar y renderizar notificaciones
+    async function loadNotifications() {
+        const notificationsList = document.getElementById('notifications-list');
+        const unreadCountBadge = document.getElementById('unread-count');
+        try {
+            const response = await fetch('/notifications.json');
+            const notifications = await response.json();
 
-                                        <div class="flex items-center gap-2">
-                                            <button type="submit" class="btn-good rounded-md">
-                                                <span class="btn-inner"> <i class="fas fa-play mr-2"></i> <strong>Ejecutar</strong></span>
-                                            </button>
+            notificationsList.innerHTML = ''; // quitar loader
+            let unreadCount = 0;
 
-                                            <button type="button" id="clear-${catIndex}-${endpointIndex}" onclick="clearResponse(${catIndex}, ${endpointIndex})" class="hidden bg-gray-700 border border-gray-600 hover:border-gray-500 font-semibold text-slate-300 px-3 py-2 text-xs font-medium transition-colors duration-150 ml-2 rounded-md">
-                                                Limpiar
-                                            </button>
+            // ordenar por fecha, más recientes primero
+            notifications.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-                                            <!-- Mostrar cURL -->
-                                            <button type="button" onclick="(function(){ const f=document.getElementById('form-${catIndex}-${endpointIndex}'); const fd=new FormData(f); const params=new URLSearchParams(); for(const [k,v] of fd.entries()){ if(v) params.append(k,v) } const q=params.toString(); const full = q ? '${path}?'+q : '${path}'; const curlCmd = 'curl -X ${method} \"'+full.replace(/\"/g,'\\\\\"')+'\"'; const container=document.getElementById('curl-${catIndex}-${endpointIndex}'); container.innerHTML = `<div class=\\'curl-box\\'><div style=\\'display:flex;justify-content:space-between;align-items:center;gap:8px;\\'><div style=\\'flex:1;overflow:auto;\\'><code>${'${method}'} '.replace(/\\$\\{method\\}/g,'') + full + '</code></div><div style=\\'margin-left:8px;\\'><button class=\\'copy-btn\\' onclick=\\'copyToClipboard(\"${'${method}'} \"+\" \"+\"\\\"\"+full.replace(/\"/g,'\\\\\\\"')+\"\\\"\")\\'>Copiar cURL</button></div></div></div>` })()" class="copy-btn ml-2">Mostrar cURL</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>`;
-                } else {
-                    html += `<div class="text-yellow-400 text-xs p-3 bg-yellow-500/20 border border-yellow-500/30">Este endpoint no puede probarse en este momento.</div>`;
+            notifications.forEach(notif => {
+                if (!notif.read) {
+                    unreadCount++;
                 }
-
-                html += `
-                            <div id="response-${catIndex}-${endpointIndex}" class="hidden mt-4">
-                                <div class="text-gray-300 font-bold text-xs mb-2 flex items-center">
-                                    <span class="material-icons text-sm mr-1">code</span> RESPUESTA
-                                </div>
-                                <div class="response-box text-white text-xs p-4 border border-gray-700 rounded-md">
-                                    <div class="max-h-80 overflow-auto" id="response-content-${catIndex}-${endpointIndex}"></div>
-                                    <div id="curl-${catIndex}-${endpointIndex}" style="margin-top:8px;"></div>
-                                </div>
-                            </div>
+                const notifElement = document.createElement('div');
+                notifElement.className = `bg-gray-800 border border-gray-700 p-4 text-xs ${notif.read ? 'opacity-60' : ''}`;
+                notifElement.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <p class="font-bold text-slate-300 mb-1">${notif.title}</p>
+                            <p class="text-slate-400">${notif.message}</p>
                         </div>
-                    </div>`;
+                        <div class="flex items-center ml-4 flex-shrink-0">
+                            ${!notif.read ? '<div class="w-2 h-2 bg-green-400 rounded-full mr-2" title="No leído"></div>' : ''}
+                            <span class="text-slate-500">${new Date(notif.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+                        </div>
+                    </div>
+                `;
+                notificationsList.appendChild(notifElement);
             });
 
-            html += `</div></div></div>`;
-        });
+            if (unreadCount > 0) {
+                unreadCountBadge.textContent = `${unreadCount} sin leer`;
+                unreadCountBadge.classList.remove('hidden');
+            }
 
-        apiList.innerHTML = html;
-    } catch (error) {
-        apiList.innerHTML = '<p class="text-red-500">Error al cargar datos de la API.</p>';
-        console.error('Error loading API data:', error);
-    }
-}
-
-/* ----------------- Notifications (same logic) ----------------- */
-async function loadNotifications() {
-    const notificationsList = document.getElementById('notifications-list');
-    const unreadCountBadge = document.getElementById('unread-count');
-    try {
-        const response = await fetch('/notifications.json');
-        const notifications = await response.json();
-
-        notificationsList.innerHTML = ''; // quitar loader
-        let unreadCount = 0;
-
-        // ordenar por fecha, más recientes primero
-        notifications.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-        notifications.forEach(notif => {
-            if (!notif.read) unreadCount++;
-            const notifElement = document.createElement('div');
-            notifElement.className = `bg-gray-800 border border-gray-700 p-4 text-xs ${notif.read ? 'opacity-60' : ''}`;
-            notifElement.innerHTML = `
-                <div class="flex justify-between items-start">
-                    <div class="flex-1">
-                        <p class="font-bold text-slate-300 mb-1">${notif.title}</p>
-                        <p class="text-slate-400">${notif.message}</p>
-                    </div>
-                    <div class="flex items-center ml-4 flex-shrink-0">
-                        ${!notif.read ? '<div class="w-2 h-2 bg-green-400 rounded-full mr-2" title="No leído"></div>' : ''}
-                        <span class="text-slate-500">${new Date(notif.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
-                    </div>
-                </div>
-            `;
-            notificationsList.appendChild(notifElement);
-        });
-
-        if (unreadCount > 0) {
-            unreadCountBadge.textContent = `${unreadCount} sin leer`;
-            unreadCountBadge.classList.remove('hidden');
+        } catch (error) {
+            notificationsList.innerHTML = '<p class="text-red-500 text-xs">Error al cargar notificaciones.</p>';
+            console.error('Error loading notifications:', error);
         }
-    } catch (error) {
-        notificationsList.innerHTML = '<p class="text-red-500 text-xs">Error al cargar notificaciones.</p>';
-        console.error('Error loading notifications:', error);
     }
-}
 
-/* ----------------- Search ----------------- */
-document.getElementById('searchInput').addEventListener('input', function() {
-    const searchTerm = this.value.toLowerCase();
-    const apiItems = document.querySelectorAll('.api-item');
-    const categories = document.querySelectorAll('.category-group');
-    const noResults = document.getElementById('noResults');
-    let visibleCount = 0;
+    // Funcionalidad de búsqueda
+    document.getElementById('searchInput').addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const apiItems = document.querySelectorAll('.api-item');
+        const categories = document.querySelectorAll('.category-group');
+        const noResults = document.getElementById('noResults');
+        let visibleCount = 0;
 
-    apiItems.forEach(item => {
-        const path = (item.dataset.path || '').toLowerCase();
-        const alias = (item.dataset.alias || '').toLowerCase();
-        const description = (item.dataset.description || '').toLowerCase();
+        apiItems.forEach(item => {
+            const path = item.dataset.path.toLowerCase();
+            const alias = item.dataset.alias.toLowerCase();
+            const description = (item.dataset.description || '').toLowerCase();
+            
+            if (path.includes(searchTerm) || alias.includes(searchTerm) || description.includes(searchTerm)) {
+                item.style.display = '';
+                visibleCount++;
+            } else {
+                item.style.display = 'none';
+            }
+        });
 
-        if (path.includes(searchTerm) || alias.includes(searchTerm) || description.includes(searchTerm)) {
-            item.style.display = '';
-            visibleCount++;
+        categories.forEach(category => {
+            const visibleItems = category.querySelectorAll('.api-item[style=""]');
+            if (visibleItems.length > 0) {
+                category.style.display = '';
+            } else {
+                category.style.display = 'none';
+            }
+        });
+
+        if (visibleCount === 0) {
+            noResults.style.display = 'block';
         } else {
-            item.style.display = 'none';
+            noResults.style.display = 'none';
         }
     });
 
-    categories.forEach(category => {
-        const visibleItems = category.querySelectorAll('.api-item[style=""]');
-        if (visibleItems.length > 0) category.style.display = ''; else category.style.display = 'none';
+
+    // Carga inicial
+    document.addEventListener('DOMContentLoaded', () => {
+        loadApis();
+        loadNotifications();
     });
-
-    noResults.style.display = (visibleCount === 0) ? 'block' : 'none';
-});
-
-/* ----------------- Initial load ----------------- */
-document.addEventListener('DOMContentLoaded', () => {
-    loadApis();
-    loadNotifications();
-});
 </script>
+
 </body>
 </html>
