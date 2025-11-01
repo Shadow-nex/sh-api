@@ -1,16 +1,16 @@
 [
-    {
+  {
     "id": "#01",
     "date": "2025-09-29",
-    "title": "Iklan API", 
-    "message": "Nyari API aktif? sung ke fathurweb.qzz.io (masih satu orang yang kerjain btw) lagi aktif-aktifnya loh",
+    "title": "Anuncio de API",
+    "message": "¿Buscas una API activa? entra a fathurweb.qzz.io (solo una persona trabaja en eso, por cierto), está muy activa ahora mismo",
     "read": false
-    },
+  },
   {
     "id": "#02",
     "date": "2025-09-07",
-    "title": "Sistem Rest API", 
-    "message": "Perubahan Design dan perbaikan bug",
+    "title": "Sistema Rest API",
+    "message": "Cambio de diseño y corrección de errores",
     "read": true
   }
 ]

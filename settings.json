@@ -1,13 +1,13 @@
 {
-  "name": "Falcon-Api",
+  "name": "shadow-api",
   "version": "v1.2",
-  "description": "Simple and easy to use API.",
+  "description": "API simple y fácil de usar.",
   "bannerImage": "/src/banner.jpg",
   "header": {
     "status": "Online!"
   },
   "apiSettings": {
-    "creator": "FlowFalcon", 
+    "creator": "Shadow.xyz", 
     "apikey": ["falcon-api"]
   },
   "categories": [

@@ -1,39 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>404</title>
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-        <title>404</title>
-        <style>
-            * {
-                color: #333;
-            }
-            body, html {
-                height: 100%;
-                overflow: hidden;
-                margin: 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: white;
-            }
-            .bg-divider {
-                background-color: #333;
-            }
-            .w-divider {
-                width: 1px;
-            }
-        </style>
-    </head>
-    <body class="font-sans antialiased">
-        <div class="flex flex-col items-center justify-center h-screen text-white">
-            <div class="flex h-5 items-center space-x-4">
-                <h1 class="text-4xl font-bold" style="color: #333">500</h1>
-                <div class="shrink-0 bg-divider border-none h-full w-divider" role="separator"></div>
-                <h2 style="color: #333">There Is Something Wrong-!!</h2>
-            </div>
-        </div>
-    </body>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error 500 | Shadow API</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #111 0%, #000 100%);
+      color: #fff;
+      overflow: hidden;
+    }
+    .glow {
+      text-shadow: 0 0 10px #ff0040, 0 0 20px #ff0040, 0 0 30px #ff0040;
+    }
+    .animate-fade {
+      animation: fade 2s infinite alternate;
+    }
+    @keyframes fade {
+      from { opacity: 0.5; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body class="font-sans antialiased">
+  <div class="text-center">
+    <h1 class="text-6xl font-bold glow animate-fade">500</h1>
+    <p class="mt-4 text-xl text-gray-300">¡Ups! Algo salió mal en el servidor.</p>
+    <p class="text-gray-500 mt-2">No es culpa tuya, estamos trabajando para solucionarlo.</p>
+    <a href="/" class="mt-6 inline-block px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-full transition-all duration-300 shadow-lg">
+      🔙 Volver al inicio
+    </a>
+    <div class="mt-10 text-sm text-gray-600">Shadow API © 2025</div>
+  </div>
+</body>
 </html>

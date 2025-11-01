@@ -1,39 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>404</title>
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-        <title>404</title>
-        <style>
-            * {
-                color: #333;
-            }
-            body, html {
-                height: 100%;
-                overflow: hidden;
-                margin: 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: white;
-            }
-            .bg-divider {
-                background-color: #333;
-            }
-            .w-divider {
-                width: 1px;
-            }
-        </style>
-    </head>
-    <body class="font-sans antialiased">
-        <div class="flex flex-col items-center justify-center h-screen text-white">
-            <div class="flex h-5 items-center space-x-4">
-                <h1 class="text-4xl font-bold" style="color: #333">404</h1>
-                <div class="shrink-0 bg-divider border-none h-full w-divider" role="separator"></div>
-                <h2 style="color: #333">Page Not Found-!!</h2>
-            </div>
-        </div>
-    </body>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error 404 | Shadow-API</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: radial-gradient(circle at 20% 20%, #0a0a10, #050508 80%);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .neon {
+      font-size: 6rem;
+      font-weight: 900;
+      color: #fff;
+      text-shadow:
+        0 0 5px #7c5cff,
+        0 0 10px #7c5cff,
+        0 0 20px #3fe7f6,
+        0 0 40px #ff6ec7;
+      animation: flicker 3s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        opacity: 1;
+      }
+      20%, 24%, 55% {
+        opacity: 0.4;
+      }
+    }
+
+    .glow-text {
+      background: linear-gradient(90deg, #7c5cff, #3fe7f6, #ff6ec7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+
+    .btn-neon {
+      margin-top: 2rem;
+      padding: 0.8rem 2rem;
+      border-radius: 9999px;
+      background: linear-gradient(90deg, #7c5cff, #3fe7f6, #ff6ec7);
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(124, 92, 255, 0.5);
+    }
+
+    .btn-neon:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(124, 92, 255, 0.8);
+    }
+
+    .subtitle {
+      color: #cfcfcf;
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent url('https://raw.githubusercontent.com/kikobeats/particles.js/master/demo/img/stars.png') repeat top center;
+      z-index: -1;
+      animation: moveStars 100s linear infinite;
+      opacity: 0.15;
+    }
+
+    @keyframes moveStars {
+      from { background-position: 0 0; }
+      to { background-position: 10000px 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stars"></div>
+  <h1 class="neon">404</h1>
+  <p class="subtitle glow-text">Página no encontrada</p>
+  <p class="text-gray-400 text-sm mt-2 px-4 text-center">Parece que el recurso que buscas no existe o fue movido.<br>Regresa al inicio para continuar explorando Shadow-API.</p>
+  <a href="/" class="btn-neon">Volver al inicio</a>
+</body>
 </html>
